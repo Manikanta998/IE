@@ -70,5 +70,23 @@ public ModelAndView update() {
         mv.setViewName("ReadOutput.html");
         return  mv;
     }
+    // =======================================================================================
+    @RequestMapping("/Delete.html")
+    public ModelAndView delete() {
+        return new ModelAndView("Delete");
+    }
+
+    @RequestMapping("/deleteOutput")
+    public ModelAndView  deleting(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mv = new ModelAndView();
+        int id = Integer.parseInt(request.getParameter("id"));
+
+
+        String s=service.stundentDelet(id);
+        System.out.println(s);
+        mv.addObject("delete",s);
+        mv.setViewName("DeleteOutput.html");
+        return  mv;
+    }
 
 }
